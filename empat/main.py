@@ -6,19 +6,22 @@ def count_and_sort(randstring:str):
   print (f"input string = {randstring}")
 
   strlist = []
-  strcount = {}
+  strcount = {}  
   for s in randstring:
-    if s not in strcount:
-      strlist.append(s)      
+    strlist.append(s)      
+    if s not in strcount:      
       strcount.update({s:1})
     else:
       incr = strcount.get(s) + 1
       strcount.update({s:incr})
   
   strlist.sort()
-  print(strcount)
-  print(strlist)
 
-  return strcount, strlist
+  onestr = "".join(strlist)
+  print(f"onestr={onestr}")
+  print(f"strcount={strcount}")
 
-count_and_sort("nama saya adalah teguh atma")
+  return onestr, strcount
+
+
+count_and_sort("abcxx ")
