@@ -1,4 +1,4 @@
-from satu import find_fewest_bottle
+from main import find_fewest_bottle
 import unittest
 
 class TestFindFewestBottle(unittest.TestCase):
@@ -12,7 +12,7 @@ class TestFindFewestBottle(unittest.TestCase):
   MAX_LITTER = 1000000
 
   err_msg_positive_prime_number     = f"value inputted should be positive and prime number : {MIN_CAP} < x < {MAX_CAP}"
-  err_msg_litter_milk_outside_range = f"value milk litter should be : {MIN_LITTER} < x < {MAX_LITTER}"
+  err_msg_litter_milk_outside_range = f"value milk litter should be integer range : {MIN_LITTER} < x < {MAX_LITTER}"
 
   def test_ok(self):
     func = find_fewest_bottle(5,7,11,100)
@@ -84,7 +84,6 @@ class TestFindFewestBottle(unittest.TestCase):
 
     self.assertEqual(func, expected_result)
   
-  
   # test for X = 100 < X < 1000000
   def test_err_litter_zero(self):
     func = find_fewest_bottle(5,13,23,0)
@@ -112,7 +111,7 @@ class TestFindFewestBottle(unittest.TestCase):
   
   def test_err_not_integer(self):
     print ("test_err_not_integer")
-    func = find_fewest_bottle(13,3,2,110.8)
+    func = find_fewest_bottle(13,3,2,119.8)
     expected_result = err_msg_litter_milk_outside_range
 
     self.assertEqual(func, expected_result)

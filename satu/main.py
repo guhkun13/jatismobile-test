@@ -36,8 +36,8 @@ def is_allowed_range(*args):
   for arg in args:
     print(arg)
     if arg < 0 or arg > 30:
-      is_allowed = False
-    
+      is_allowed = False    
+
   return is_allowed
 
 def is_prime_number(*args):
@@ -65,10 +65,14 @@ def find_fewest_bottle(b1: int, b2: int, b3: int, x: int):
 
   print(f" Bottle 1: {b1} litter | Bottle 2: {b2} litter | Bottle 3: {b3} litter | X: {x} litter")
   err_msg_positive_and_prime_number   = f"value inputted should be positive and prime number : {MIN_CAP} < x < {MAX_CAP}"
-  err_msg_litter_milk_outside_range   = f"value milk litter should be : {MIN_LITTER} < x < {MAX_LITTER}"
+  err_msg_litter_milk_outside_range   = f"value milk litter should be integer range : {MIN_LITTER} < x < {MAX_LITTER}"
 
   if x < 100 or x > 1000000:
     return err_msg_litter_milk_outside_range
+  
+  if not isinstance(x, int):
+    return err_msg_litter_milk_outside_range
+
 
   cb1 = cb2 = cb3 = 0
   if not is_allowed(b1, b2, b3):
@@ -105,4 +109,4 @@ def find_fewest_bottle(b1: int, b2: int, b3: int, x: int):
   print(f"Count Bottle needed | Bottle 1-{b1}L: {cb1} | Bottle 2-{b2}L: {cb2} | Bottle 3-{b3}L: {cb3} | - Total bottle: {ttl} btl ")
   return ttl
   
-print(find_fewest_bottle(5,29,7,100))
+# print(find_fewest_bottle(5,29,7,100))
