@@ -43,8 +43,16 @@ CORN_CALS = 21
 POTATO_CALS = 17
 
 def find_minimum_cost_food(**kwargs):
-  # for k, v in kwargs.items():
-  #   print(f"{k} = ${v} per 100 gr")
+  # define error message
+  err_msg_must_be_positive_number = "Price must be positive number below a hundred: 0 < x < 100"
+  
+  for k, v in kwargs.items():
+    print(f"{k} = ${v} per 100 gr")
+
+    if v <= 0 or v > 100:
+      err = err_msg_must_be_positive_number
+      print (f"Error on price {k}: {err}")
+      return err
   
   rice_price = kwargs.get('rice')
   corn_price = kwargs.get('corn')
@@ -80,7 +88,6 @@ def find_minimum_cost_food(**kwargs):
   print(rice_prop)
   print(corn_prop)
   print(potato_prop)
-
 
   # 1. Find cheapest product
   prices = [rice_prop['price_per_gr'], corn_prop['price_per_gr'], potato_prop['price_per_gr']]
@@ -131,4 +138,8 @@ def get_total_price_and_carbs_by_price(total_price, total_carbs, total_item, pri
   return total_price, total_carbs, total_item
 
 # Call main function
-find_minimum_cost_food(rice = 2.0, corn = 1.4, potato = 1.8)
+# find_minimum_cost_food(rice = 2.0, corn = 1.4, potato = 1.8)
+
+find_minimum_cost_food(rice = -2.0, corn = 1.4, potato = 1.8)
+find_minimum_cost_food(rice = 2.0, corn = 0.0, potato = 1.8)
+find_minimum_cost_food(rice = 2.0, corn = 10.0, potato = 100.8)
