@@ -62,6 +62,7 @@ def find_fewest_bottle(b1: int, b2: int, b3: int, x: int):
   Returns:
       int: total bottle needed to contain X litter
   """
+
   print(f" Bottle 1: {b1} litter | Bottle 2: {b2} litter | Bottle 3: {b3} litter | X: {x} litter")
   err_msg_positive_and_prime_number   = f"value inputted should be positive and prime number : {MIN_CAP} < x < {MAX_CAP}"
   err_msg_litter_milk_outside_range   = f"value milk litter should be : {MIN_LITTER} < x < {MAX_LITTER}"
@@ -83,7 +84,6 @@ def find_fewest_bottle(b1: int, b2: int, b3: int, x: int):
 
   print(f"count_bottles = {count_bottles}")
   bottles = [b1, b2, b3]
-  cbs = [0,0,0]
   print(bottles)
 
   bottles.sort(reverse=True)
