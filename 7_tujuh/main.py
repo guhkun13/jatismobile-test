@@ -10,7 +10,9 @@ Facts:
 3. when N dice are rolled, smallest possible sum is N and max possible is 6N
 4. using permutation to count possibility each sum needed
 
-source : https://www.thoughtco.com/probabilities-for-rolling-three-dice-3126558
+source : 
+1.https://www.thoughtco.com/probabilities-for-rolling-three-dice-3126558
+2. https://www.geeksforgeeks.org/how-to-solve-a-3-dice-problem/
 
 solutions:
 1. create dict for each possible sum outcomes
