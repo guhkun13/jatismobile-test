@@ -1,0 +1,10 @@
+{
+  "sqltools.connections": [
+    {
+      "previewLimit": 50,
+      "driver": "SQLite",
+      "database": "${workspaceFolder:jatismobile}/7_tujuh_wpo/database.db",
+      "name": "tes"
+    }
+  ]
+}
