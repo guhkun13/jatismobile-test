@@ -84,6 +84,31 @@ def list_user():
 
   return jsonify(json_items)
 
+@app.route("/invoices", methods=['GET'])
+def list_invoices():
+  conn = sqlite3.connect(DB_NAME)  
+  cur = conn.cursor()
+
+  items = cur.execute('SELECT * FROM invoice').fetchall()
+  conn.close()
+
+  json_items = []
+  for item in items:
+    print(item)
+    l_item = item
+    l_item  = {
+      "id" : item[0],
+      "username" : item[1],
+      "price" : item[2],
+      "voucher_id" : item[3],
+      "voucher_value" : item[4],
+      "final_price" : item[5],
+    }
+
+    json_items.append(l_item)
+
+  return jsonify(json_items)
+
 # register user by username
 @app.route("/register/<username>", methods=['GET'])
 def register_user(username):
@@ -104,6 +129,35 @@ def register_user(username):
     ret = jsonify({'status': False, 'message': str(e), 'data': username})
 
     return ret  
+
+# register user by username
+@app.route("/buy/<username>/<price>", methods=['GET'])
+def buy(username, price):
+  msg = (f"username {username} pay price {price}")  
+  print(msg)
+  # TODO: check if username is registered!
+
+  try:
+    with sqlite3.connect(DB_NAME) as conn:
+      cur = conn.cursor()
+
+      cur.execute('INSERT INTO invoice (username, price, final_price) VALUES (?, ?, ?)', (username, price, price))
+
+      conn.commit()
+      msg = "Record successfully added"      
+      ret = jsonify({'status': True, 'message': msg, 'data': None})
+      return ret
+  except Exception as e:
+    print ('Exception : ', str(e))
+    conn.rollback()
+    ret = jsonify({'status': False, 'message': str(e), 'data': None})
+
+    return ret  
+
+  ret = jsonify(msg)
+  return ret
+
+
 
 if __name__ == '__main__':
    app.run(debug = True)
