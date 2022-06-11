@@ -1,4 +1,4 @@
-from main import find_fewest_bottle
+from main import solution as find_fewest_bottle
 import unittest
 
 class TestFindFewestBottle(unittest.TestCase):
@@ -9,19 +9,24 @@ class TestFindFewestBottle(unittest.TestCase):
   MAX_CAP = 30
 
   MIN_LITTER = 100
-  MAX_LITTER = 1000000
+  MAX_LITTER = 1_000_000_000
 
   err_msg_positive_prime_number     = f"value inputted should be positive and prime number : {MIN_CAP} < x < {MAX_CAP}"
   err_msg_litter_milk_outside_range = f"value milk litter should be integer range : {MIN_LITTER} < x < {MAX_LITTER}"
 
   def test_ok(self):
-    func = find_fewest_bottle(5,7,11,100)
+    func = find_fewest_bottle(5,7,11,100)        
     expected_result = 10
     self.assertEqual(func, expected_result)
   
   def test_ok_2(self):
     func = find_fewest_bottle(11,5,7,100)
     expected_result = 10
+    self.assertEqual(func, expected_result)
+  
+  def test_ok_big(self):
+    func = find_fewest_bottle(3,2,1,1_000_000_000)
+    expected_result = 333333334
     self.assertEqual(func, expected_result)
   
   def test_err_negative_capacity_b1(self):
@@ -104,13 +109,13 @@ class TestFindFewestBottle(unittest.TestCase):
     self.assertEqual(func, expected_result)
   
   def test_err_litter_upper(self):
-    func = find_fewest_bottle(5,13,23,2000000)
+    func = find_fewest_bottle(5,13,23,2_000_000_000_0)
     expected_result = err_msg_litter_milk_outside_range
 
     self.assertEqual(func, expected_result)
   
   def test_err_not_integer(self):
-    print ("test_err_not_integer")
+    # print ("test_err_not_integer")
     func = find_fewest_bottle(13,3,2,119.8)
     expected_result = err_msg_litter_milk_outside_range
 
