@@ -68,7 +68,7 @@ def solution(b1: int, b2: int, b3: int, x: int):
 
   return ttl_item
 
-def do_magic(it:dict, ttl_item,  diff_ltr, items_needed:list):
+def do_magic(it:dict, ttl_item:int,  diff_ltr:int, items_needed:list):
   n_item = diff_ltr // it.get('value')
   if not n_item:
       n_item = 1
